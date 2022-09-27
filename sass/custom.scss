@@ -1,0 +1,157 @@
+
+// 1. Include functions first (so you can manipulate colors, SVGs, calc, etc)
+@import "../node_modules/bootstrap/scss/functions";
+
+// 2. Include any default variable overrides here
+$font-family-base: 'Lato', sans-serif;
+$navbar-dark-toggler-icon-bg: url('../img/icons/burger-solid.svg');
+$navbar-dark-toggler-border-color: transparent;
+
+// 3. Include remainder of required Bootstrap stylesheets
+@import "../node_modules/bootstrap/scss/variables";
+
+// 4. Include any default map overrides here
+// Create your own map
+$custom-colors: (
+  "rojo": #900,
+  "primary": $indigo-800,
+  "secondary": $indigo-400
+);
+
+// Merge the maps
+$theme-colors: map-merge($theme-colors, $custom-colors);
+
+// 5. Include remainder of required parts
+@import "../node_modules/bootstrap/scss/maps";
+@import "../node_modules/bootstrap/scss/mixins";
+@import "../node_modules/bootstrap/scss/root";
+
+// 6. Optionally include any other parts as needed
+@import "../node_modules/bootstrap/scss/utilities";
+@import "../node_modules/bootstrap/scss/reboot";
+@import "../node_modules/bootstrap/scss/type";
+@import "../node_modules/bootstrap/scss/images";
+@import "../node_modules/bootstrap/scss/containers";
+// @import "../node_modules/bootstrap/scss/grid";
+// @import "../node_modules/bootstrap/scss/helpers";
+
+// components
+// Layout & components
+// @import "../node_modules/bootstrap/scss/tables";
+@import "../node_modules/bootstrap/scss/buttons";
+@import "../node_modules/bootstrap/scss/transitions";
+@import "../node_modules/bootstrap/scss/dropdown";
+// @import "../node_modules/bootstrap/scss/button-group";
+@import "../node_modules/bootstrap/scss/nav";
+@import "../node_modules/bootstrap/scss/navbar";
+@import "../node_modules/bootstrap/scss/card";
+// @import "../node_modules/bootstrap/scss/accordion";
+// @import "../node_modules/bootstrap/scss/breadcrumb";
+// @import "../node_modules/bootstrap/scss/pagination";
+// @import "../node_modules/bootstrap/scss/badge";
+// @import "../node_modules/bootstrap/scss/alert";
+// @import "../node_modules/bootstrap/scss/progress";
+// @import "../node_modules/bootstrap/scss/list-group";
+// @import "../node_modules/bootstrap/scss/close";
+// @import "../node_modules/bootstrap/scss/toasts";
+// @import "../node_modules/bootstrap/scss/modal";
+// @import "../node_modules/bootstrap/scss/tooltip";
+// @import "../node_modules/bootstrap/scss/popover";
+// @import "../node_modules/bootstrap/scss/carousel";
+// @import "../node_modules/bootstrap/scss/spinners";
+// @import "../node_modules/bootstrap/scss/offcanvas";
+// @import "../node_modules/bootstrap/scss/placeholders";
+
+// 7. Optionally include utilities API last to generate classes based on the Sass map in `_utilities.scss`
+@import "../node_modules/bootstrap/scss/utilities/api";
+
+// 8. Add additional custom code here
+.navbar-brand {
+  @extend .d-flex;
+  @extend .align-items-center;
+}
+
+.bg-header-img {
+  background-image: url('../img/bg-hero.jpg');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  height: calc(100vh - 56px);
+  @extend .d-flex;
+  @extend .flex-column;
+  @extend .align-items-center;
+  @extend .justify-content-center;
+}
+
+.grid-col-2 {
+  display: grid;
+  grid-template-columns: repeat(1, 1fr);
+  gap: 1rem;
+}
+
+@include media-breakpoint-up(sm) {
+  .grid-col-2 {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+.gallery {
+  display: grid;
+  grid-template-columns: repeat(1, 1fr);
+  gap: 1rem;
+}
+
+@include media-breakpoint-up(sm) {
+  .gallery {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@include media-breakpoint-up(md) {
+  .gallery {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+@include media-breakpoint-up(lg) {
+  .gallery {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+.photo {
+  position: relative;
+  
+  &:hover {
+    cursor: pointer;
+  }
+  
+  &-img {
+    transition: all 0.5s ease-out;
+    width: 100%;
+  }
+
+  &-body {
+    transition: all 0.5s ease-out;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    padding: 2rem;
+    background-color: rgba(0, 0, 0, 0.5);
+    color: $white;
+    width: 100%;
+    text-align: center;
+    opacity: 0;
+  }
+
+  &:hover > &-img {
+    transform: scale(1.1);
+  }
+
+  &:hover > &-body {
+    opacity: 1;
+  }
+
+}
+
+
